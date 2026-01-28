@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Ventures | Family of Brands</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #ffffff;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo-placeholder {
+            width: 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #000;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 5% 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-logo {
+            margin-bottom: 2rem;
+        }
+
+        .hero-logo img {
+            height: 120px;
+            width: auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            color: #000;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 6rem 5%;
+            background: #fafafa;
+        }
+
+        .portfolio-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .brand-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .brand-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .brand-logo-placeholder {
+            width: 100%;
+            height: 120px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #999;
+            border: 2px dashed #ddd;
+        }
+
+        .brand-logo {
+            width: 100%;
+            height: 120px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-logo img {
+            max-width: 80%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .brand-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #000;
+        }
+
+        .brand-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .brand-link {
+            display: inline-block;
+            color: #000;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #000;
+            padding-bottom: 2px;
+            transition: opacity 0.3s;
+        }
+
+        .brand-link:hover {
+            opacity: 0.6;
+        }
+
+        .brand-link-disabled {
+            display: inline-block;
+            color: #999;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 5%;
+            background: #fafafa;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: #000;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .impact-report-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .impact-report-link:hover {
+            background: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .impact-report-icon {
+            display: inline-block;
+            margin-left: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 5%;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: #000;
+        }
+
+        .contact-address {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 6rem 5%;
+            background: #ffffff;
+        }
+
+        .team-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .team-member {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+
+        .team-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border: 3px solid #e0e0e0;
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-member h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #000;
+        }
+
+        .team-member .role {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .team-member .bio {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: white;
+            padding: 3rem 5%;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-contact {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .footer-contact a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            <img src="sv-logo.jpg" alt="Simple Ventures">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#team">Our Team</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-logo">
+            <img src="sv-logo.jpg" alt="Simple Ventures">
+        </div>
+        <h1>SIMPLE VENTURES</h1>
+        <p>The Simple Ventures family of brands exist to positively impact customers, employees, partners and communities.</p>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-header">
+            <h2>Our Portfolio</h2>
+            <p>We build and support brands that make a meaningful difference</p>
+        </div>
+        
+        <div class="portfolio-grid">
+            <!-- Trevi Card -->
+            <div class="brand-card">
+                <div class="brand-logo">
+                    <img src="trevi-logo.png" alt="Trevi Logo">
+                </div>
+                <p>Premium beverage brand delivering quality and refreshment</p>
+                <a href="https://www.drinktrevi.com" target="_blank" class="brand-link">Visit Trevi →</a>
+            </div>
+
+            <!-- Simple Modern Card -->
+            <div class="brand-card">
+                <div class="brand-logo">
+                    <img src="simple-modern-logo.png" alt="Simple Modern Logo">
+                </div>
+                <p>Leading drinkware brand creating innovative, sustainable products</p>
+                <a href="https://www.simplemodern.com" target="_blank" class="brand-link">Visit Simple Modern →</a>
+            </div>
+
+            <!-- Wash'd Card -->
+            <div class="brand-card">
+                <div class="brand-logo">
+                    <img src="washd-logo.png" alt="Wash'd Logo">
+                </div>
+                <p>Clean company delivering fresh solutions</p>
+                <span class="brand-link-disabled">Coming Soon</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <div class="section-header">
+            <h2>Our Team</h2>
+            <p>Meet the leaders behind Simple Ventures</p>
+        </div>
+        
+        <div class="team-grid">
+            <!-- Bryan Porter -->
+            <div class="team-member">
+                <div class="team-photo">
+                    <img src="bryan-porter.jpg" alt="Bryan Porter">
+                </div>
+                <h3>Bryan Porter</h3>
+                <div class="role">President</div>
+                <div class="bio">
+                    Bryan Porter is the President of Simple Ventures and co-founder of Simple Modern. Prior to launching Simple Ventures, Bryan served as Chief E-Commerce Officer of Simple Modern, where he was responsible for digital sales, including Amazon, DTC and international. Bryan has 14 years of experience in e-commerce, analytics, and growing startup businesses. Prior to starting Simple Modern in 2015, Bryan served as the Director of Analytics at QuiBids, and he graduated from the University of Oklahoma with a Bachelor of Business Administration degree in Energy Management.
+                </div>
+            </div>
+
+            <!-- Lee Graves -->
+            <div class="team-member">
+                <div class="team-photo">
+                    <img src="lee-graves.jpg" alt="Lee Graves">
+                </div>
+                <h3>Lee Graves</h3>
+                <div class="role">Chief Operating Officer</div>
+                <div class="bio">
+                    Lee Graves is the Chief Operating Officer at Simple Ventures. Lee has more than 20 years of experience in production management, engineering design and project management. Prior to joining Simple Ventures, Lee served as the Chief Manufacturing Officer for Simple Modern for 10 years, and as Director of Mining Operations for ACG Materials where he was responsible for nine facilities and more than $80 million in assets. Lee graduated from the University of Oklahoma with a bachelor's degree in mechanical engineering and a Master of Business Administration.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <h2>About Simple Ventures</h2>
+            <p>
+                Simple Ventures is a family of brands committed to making a positive impact. We believe in building companies that serve our customers with excellence, support our employees with purpose, partner with integrity, and contribute meaningfully to our communities.
+            </p>
+            <p>
+                Our portfolio spans innovative consumer brands, each dedicated to delivering exceptional quality and value while staying true to our core mission of positive impact.
+            </p>
+            <p>
+                Each brand family is committed to donating 10% of all profits to charitable organizations in support of communities and causes around the world. For more information on the organizations we serve, please download our community impact report.
+            </p>
+            <a href="2024_Simple_Modern_Community_Impact_Report.pdf" download class="impact-report-link">
+                📊 Download 2024 Community Impact Report <span class="impact-report-icon">↓</span>
+            </a>
+            <!-- NOTE: Place the PDF file "2024_Simple_Modern_Community_Impact_Report.pdf" in the same folder as this HTML file -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Contact</h2>
+        <div class="contact-address">
+            750 SW 24th Street<br>
+            Suite 300<br>
+            Moore, OK 73160
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-logo">Simple Ventures</div>
+            
+            <ul class="footer-links">
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#team">Our Team</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <div class="footer-contact">
+                <p>© 2026 Simple Ventures. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
